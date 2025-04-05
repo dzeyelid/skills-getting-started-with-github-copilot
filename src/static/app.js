@@ -25,6 +25,20 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          <div class="participants-info">
+            <h4>参加者一覧</h4>
+            ${details.participants.length > 0 ? 
+              `<div class="participants-grid">
+                ${details.participants.map(participant => 
+                  `<div class="participant-card">
+                    <i class="fas fa-user-circle"></i>
+                    <span>${escapeHTML(participant)}</span>
+                  </div>`
+                ).join("")}
+              </div>` : 
+              '<p>まだ参加者はいません</p>'
+            }
+          </div>
         `;
 
         activitiesList.appendChild(activityCard);
